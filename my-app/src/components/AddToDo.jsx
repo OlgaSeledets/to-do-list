@@ -35,12 +35,18 @@ const AddToDo = () => {
             setToDo('')
         }
     }
+
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+          handleClickAdd()
+        }
+      }
   
     return (
         <div>
             <div className='wrapper'>
                 <label className='label'>
-                    <input onChange={e => setToDo(e.target.value)} className='input' type="text" placeholder='Enter ToDo' value={toDo}></input>
+                    <input onKeyPress={handleKeyPress} onChange={e => setToDo(e.target.value)} className='input' type="text" placeholder='Enter ToDo' value={toDo}></input>
                     <button onClick={() => handleClickAdd()} className='add' style={(toDo === '' || toDo === undefined) ? styleDisabled : styleEnabled} disabled={(toDo === '' || toDo === undefined) && "disabled"}>Add</button>
                 </label>
             </div>
